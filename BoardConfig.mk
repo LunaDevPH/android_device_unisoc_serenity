@@ -1,0 +1,49 @@
+DEVICE_PATH := device/unisoc/serenity
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_VARIANT := generic
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_CPU_VARIANT := generic
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := serenity
+
+# Kernel - Based on your grep results
+BOARD_KERNEL_CMDLINE := earlycon console=ttyS1,921600n8 loop.max_part=7 loglevel=1 kpti=0 printk.devkmsg=on
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_BOOT_HEADER_VERSION := 4
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+# Boot / Recovery
+BOARD_HAS_NO_RECOVERY := true
+BOARD_USES_RECOVERY_AS_BOOT := false
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+
+# Storage & FileSystems
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EROFS := true
+
+# TWRP Configuration
+TW_THEME := portrait_hdpi
+TW_EXTRA_LANGUAGES := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/backlight/brightness"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 150
+
+# File system support
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EROFS := true
+BOARD_RECOVERY_CHARGER_USE_RESTRICTED_SINK := true
+
+# TWRP Debugging
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
